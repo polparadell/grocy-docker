@@ -1,4 +1,4 @@
-version: '2.4'
+version: '3'
 
 services:
 
@@ -14,7 +14,6 @@ services:
       - backend
     ports:
       - '127.0.0.1:8080:8080'
-    read_only: true
     tmpfs:
       - /tmp
     restart: unless-stopped
@@ -29,7 +28,6 @@ services:
       dockerfile: Containerfile-backend
     expose:
       - '9000'
-    read_only: true
     tmpfs:
       - /tmp
       - /var/www/data/viewcache:mode=755,uid=82,gid=82,size=16m
