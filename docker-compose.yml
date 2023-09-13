@@ -17,6 +17,10 @@ services:
     tmpfs:
       - /tmp
     restart: unless-stopped
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node==1
 
   backend:
     image: "grocy/backend:v4.0.3"
@@ -36,6 +40,10 @@ services:
     env_file:
       - grocy.env
     restart: unless-stopped
-
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node==1
+          
 volumes:
   app-db:
