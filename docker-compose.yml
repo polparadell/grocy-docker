@@ -20,7 +20,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.labels.node==1
+          - node.labels.type==worker
 
   backend:
     image: "grocy/backend:v4.0.3"
@@ -43,7 +43,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.labels.node==1
+          - node.labels.type==worker
           
 volumes:
   app-db:
