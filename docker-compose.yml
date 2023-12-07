@@ -21,8 +21,8 @@ services:
     deploy:
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.whoami.rule=Path(`/grocy`)"
-        - "traefik.http.services.whoami.loadbalancer.server.port=8080"
+        - "traefik.http.routers.grocy.rule=Path(`/grocy`)"
+        - "traefik.http.services.grocy.loadbalancer.server.port=8080"
       placement:
         constraints:
           - node.labels.type!=nas
