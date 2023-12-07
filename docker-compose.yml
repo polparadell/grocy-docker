@@ -12,15 +12,20 @@ services:
       dockerfile: Containerfile-frontend
     depends_on:
       - backend
-    ports:
-      - '8080:8080'
+    networks:
+      - internal
+      - reverse_proxy_frontend
     tmpfs:
       - /tmp
     restart: unless-stopped
     deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.whoami.rule=Path(`/grocy`)"
+        - "traefik.http.services.whoami.loadbalancer.server.port=8080"
       placement:
         constraints:
-          - node.labels.type==worker
+          - node.labels.type!=nas
 
   backend:
     image: "grocy/backend:v4.0.3"
@@ -30,8 +35,8 @@ services:
         PLATFORM: linux/amd64
       context: .
       dockerfile: Containerfile-backend
-    expose:
-      - '9000'
+    networks:
+      - internal
     tmpfs:
       - /tmp
       - /var/www/data/viewcache:mode=755,uid=82,gid=82,size=16m
@@ -43,7 +48,12 @@ services:
     deploy:
       placement:
         constraints:
-          - node.labels.type==worker
+          - node.labels.type!=nas
           
 volumes:
   app-db:
+
+networks:
+  internal:
+  reverse_proxy_frontend:
+    external: true
