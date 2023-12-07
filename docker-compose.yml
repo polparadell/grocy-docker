@@ -23,6 +23,7 @@ services:
         - "traefik.enable=true"
         - "traefik.http.routers.grocy.rule=Path(`/grocy`)"
         - "traefik.http.services.grocy.loadbalancer.server.port=8080"
+        - "traefik.http.middlewares.grocy_path.replacepath.path=/"
       placement:
         constraints:
           - node.labels.type!=nas
