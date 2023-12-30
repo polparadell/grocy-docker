@@ -28,6 +28,7 @@ services:
         - "traefik.http.middlewares.grocy_path.replacepathregex.regex=/grocy(.*)"
         - "traefik.http.middlewares.grocy_path.replacepathregex.replacement=$$1"
         - "traefik.http.routers.grocy.middlewares=grocy_path@docker"
+        - "traefik.docker.network=reverse_proxy_frontend"
         #- "traefik.http.routers.grocy.middlewares=grocy_strippath@docker"
         #- "traefik.http.middlewares.grocy_strippath.stripprefix.prefixes=/grocy"
       placement:
