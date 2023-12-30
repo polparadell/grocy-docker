@@ -53,6 +53,8 @@ services:
     env_file:
       - grocy.env
     restart: unless-stopped
+    environment:
+      - GROCY_BASE_URL=http://rpi1.polbel.casa/grocy
     deploy:
       placement:
         constraints:
