@@ -23,7 +23,7 @@ services:
     deploy:
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.grocy.rule= Host(`casa`) && PathPrefix(`/grocy`)"
+        - "traefik.http.routers.grocy.rule= Host(`rpi1.polbel.casa`) && PathPrefix(`/grocy`)"
         - "traefik.http.services.grocy.loadbalancer.server.port=8080"
         #- "traefik.http.routers.grocy.middlewares=grocy_strippath@docker"
         #- "traefik.http.middlewares.grocy_strippath.stripprefix.prefixes=/grocy"
