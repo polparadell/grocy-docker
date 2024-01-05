@@ -1,5 +1,11 @@
 # Changelog
 
+## [v4.0.3-2] - 2023-12-09
+
+- Rebuild container imagers with Alpine 3.19.0
+- Upgrade to PHP 8.2
+- Add some well-known OCI container labels
+
 ## [v4.0.3-1] - 2023-11-04
 
 - Rebuild container imagers with Alpine 3.18.4
