@@ -3,10 +3,10 @@ version: '3'
 services:
 
   frontend:
-    image: "grocy/frontend:v3.3.2"
+    image: "grocy/frontend:v4.0.3"
     build:
       args:
-        GROCY_VERSION: v3.3.2
+        GROCY_VERSION: v4.0.3
         PLATFORM: linux/amd64
       context: .
       dockerfile: Containerfile-frontend
@@ -36,10 +36,10 @@ services:
           - node.labels.type!=nas
 
   backend:
-    image: "grocy/backend:v3.3.2"
+    image: "grocy/backend:v4.0.3"
     build:
       args:
-        GROCY_VERSION: v3.3.2
+        GROCY_VERSION: v4.0.3
         PLATFORM: linux/amd64
       context: .
       dockerfile: Containerfile-backend
